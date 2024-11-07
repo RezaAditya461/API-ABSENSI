@@ -28,10 +28,10 @@ app.use('/api/attendance', attendanceRoutes);
 app.use('/api/class', ClassRoutes);
 app.use('/api/studentdata', StudentDataRoutes)
 
+await sequelize.sync(); // Sinkronisasi database
+console.log("Database connected successfully...");
 const dev = async () => {
     try {
-        await sequelize.sync(); // Sinkronisasi database
-        console.log("Database connected successfully...");
 
         const PORT = process.env.PORT || 2020; // Tetapkan default 2020 jika PORT tidak diatur di .env
         app.listen(PORT, () => {
